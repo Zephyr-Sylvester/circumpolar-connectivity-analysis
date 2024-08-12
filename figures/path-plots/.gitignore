@@ -1,3 +1,14 @@
+# Ignore large data files
+processed_data/
+data/
+
+# Ignore any other large files
+*.log
+*.tmp
+
+# Ignore large figure libraries
+figures/
+
 # Ignore MacOS system files
 .DS_Store
 
@@ -7,9 +18,7 @@ __pycache__/
 # Ignore Jupyter Notebook checkpoints
 .ipynb_checkpoints/
 
-# Ignore data directory
-data/
-processed_data/
 
-# Ignore figure library
-figures/
+
+
+your_file_pattern
