@@ -1,0 +1,79 @@
+name: env23
+
+channels:
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.8
+  - pip
+
+  # Core scientific python
+  - numpy
+  - pyqt
+  - tqdm
+  - netcdf4
+  - xarray
+  - scipy
+  - netcdf4
+
+  # NCAR Environment
+  - cf_units
+  - cftime
+  - bottleneck
+  - esmpy
+  - metpy
+  - seawater
+  - scikit-learn
+  - statsmodels
+  - tabulate
+  - toolz
+  - watermark
+  - xesmf
+  - xgcm
+  - xhistogram
+  - xrft
+  - zarr
+  - bokeh
+  - xgcm
+  - h5py
+  - xskillscore 
+  - git
+  
+  # Plotting
+  - matplotlib
+  - plotly
+  - seaborn
+  - cmocean
+
+  # Spatial packages
+  - pysal
+  - pyproj>=3.0
+  - rasterstats
+  - geopy
+  - cartopy
+  - descartes
+  - contextily
+  - earthpy
+  - folium
+  - geojson
+  - mapboxgl
+  - hydrofunctions
+  - geocoder
+  - tweepy
+  - rioxarray>=0.3.0
+
+  - nc-time-axis
+  - regionmask
+
+
+  # Jupyter Environment
+  - papermill
+  - autopep8
+  - jupyterlab
+  - notebook
+  - ipython
+  - jupyter_contrib_nbextensions
+  - nbclean
+  - nbresuse
+  
