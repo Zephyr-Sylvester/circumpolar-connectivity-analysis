@@ -23,7 +23,7 @@ import cmocean
 import cmocean.cm as cmo
 
 # Bring In the Contours:
-repo_path = '/Users/zephyrsylvester/repos/connectivity-manuscript/'
+repo_path = '/Users/zephyrsylvester/repos/circumpolar-connectivity-analysis/'
 data_path = repo_path + 'data/'
 ibsco_path = data_path + 'IBSCO/'
 
