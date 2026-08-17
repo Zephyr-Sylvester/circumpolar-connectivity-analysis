@@ -20,7 +20,9 @@ import cmocean.cm as cmo
 locations = {
     'BS': {
         'name': 'BS',
-        'label': 'Bransf.',
+        'label_short': 'Bransf.',
+        'label': 'Bransfeild Strait',
+        'ng': 'BS-NG',
         'order': 0,
         'color': '#d55e00',
         'boxes': [
@@ -29,8 +31,10 @@ locations = {
             ]
     },
     'GERL': {
-        'name': 'GERL',
-        'label': 'Gerl.',
+        'name': 'GS',
+        'label_short': 'Gerl.',
+        'label': "Gerlache Strait",
+        'ng': 'GS-NG',
         'order': 1,
         'color': '#029e73',
         'boxes': [
@@ -39,7 +43,9 @@ locations = {
     },
     'GP': {
         'name': 'GP',
-        'label': 'Grand.',
+        'label_short': 'Grand.',
+        'label': "Grandidier Passage",
+        'ng': 'GP-NG',
         'order': 2,
         'color': '#cc78bc',
         'boxes': [
@@ -48,7 +54,9 @@ locations = {
     },
     'MB2': {
         'name': 'MB',
-        'label': 'M. Bay',
+        'label_short': 'M. Bay',
+        'label': 'Marguerite Bay',
+        'ng': 'MB-NG',
         'order': 3,
         'color': '#0173b2',
         'boxes': [
@@ -127,71 +135,8 @@ lat_side7 = [-70.0, -70.0]
 lonpoly_48_1 = lon_side1 + lon_side2 + lon_side3 + lon_side4 + lon_side5 + lon_side6 + lon_side7
 latpoly_48_1 = lat_side1 + lat_side2 + lat_side3 + lat_side4 + lat_side5 + lat_side6 + lat_side7
 
-# Define Strata
-mu_strata = {
-    'MU_EI': {
-        'name': 'EI',
-        'label': 'Elephant Island',
-        'order': 0,
-        'color': '#d55e00',
-        'boxes': [
-            {'lonpoly': [-53.4425, -58.0, -58.0, -53.4425], 'latpoly': [-60.0, -60.0, -61.8987, -61.8987]}
-        ]
-    },
-    'MU_SSIW': {
-        'name': 'SSIW',
-        'label': 'South Shetland Islands West',
-        'order': 1,
-        'color': '#029e73',
-        'boxes': [
-            {'lonpoly': [-58.0, -59.4842, -59.5536, -60.5258, -63.3036, -61.9842, -58.0, -58.0],
-             'latpoly': [-60.0, -60.0, -60.7958, -60.7958, -62.2125, -62.9563, -61.8987, -60.0]}
-        ]
-    },
-    'MU_BS': {
-        'name': 'BS',
-        'label': 'Bransfield Strait',
-        'order': 2,
-        'color': '#cc78bc',
-        'boxes': [
-            {'lonpoly': [-56.255, -58.0, -61.9842, -59.99497, -56.255], 
-             'latpoly': [-61.8987, -61.8987, -62.9563, -63.88167, -63.0083]}
-        ]
-    },
-    'MU_JOIN': {
-        'name': 'JOIN',
-        'label': 'Joinville Islands',
-        'order': 3,
-        'color': '#0173b2',
-        'boxes': [
-            {'lonpoly': [-53.4425, -56.255, -56.255, -53.4425],
-             'latpoly': [-61.8987, -61.8987, -63.4167, -63.4167]}
-        ]
-    },
-    'MU_GERL': {
-        'name': 'GS',
-        'label': 'Gerlache Strait',
-        'order': 4,
-        'color': '#f0e442',
-        'boxes': [
-            {'lonpoly': [-62.795, -61.9842, -59.74, -63.5504, -66.3476],
-             'latpoly': [-62.5, -62.9563, -64.0, -65.727, -64.3]}
-        ]
-    },
-    '48_1': {
-        'name': '48.1',
-        'label': 'Antarctic Peninsula',
-        'order': 5,
-        'color': '#e69f00',
-        'boxes': [
-        {
-            'lonpoly': lonpoly_48_1,
-            'latpoly': latpoly_48_1
-        }
-    ]
-    }
-}
 extents = {
+    "BS-NG": [278, 316, -64, -60],
     "base": [275, 311, -72, -59],
     "expand": [274, 316, -71, -60],
     "toSG": [281.6, 322, -65, -60],
@@ -199,8 +144,8 @@ extents = {
     "hires": [269, 309, -72, -59],
     "bells": [265.54, 305.32, -75.4, -62.8],
     "WAPtoamund": [226.93, 312.34, -76.995, -62.365],
-    "prydz": [60.9, 88.2, -74.32000000000001, -58.64],
-    "amund": [229.91, 276.58, -76.67, -66.59],
+    # "prydz": [60.9, 88.2, -74.32000000000001, -58.64],
+    # "amund": [229.91, 276.58, -76.67, -66.59],
 
 }
 
@@ -336,7 +281,7 @@ def plot_nurseries_bw_fill(ax, extent, locations, box_zorder=6):
 
 
 # Bring In the Contours:
-repo_path = '/Users/zephyrsylvester/repos/hi-res-AP/'
+repo_path = '/Users/zephyrsylvester/repos/circumpolar-connectivity-analysis/'
 data_path = repo_path + 'data/'
 ibsco_path = data_path + 'IBSCO/'
 
@@ -371,22 +316,22 @@ def plot_contour(ax, extent): #  boxes, box_zorder=6
 hypotheses = {
     'h_null': {
         'name': 'h_null',
-        'label': 'Ocean',
+        'label': 'Ocean Only',
         'order': 0
     },
     'h_ice': {
         'name': 'h_ice',
-        'label': 'Ice',
+        'label': 'Sea Ice',
         'order': 1
     },
     'h_dvm': {
         'name': 'h_dvm',
-        'label': 'DVM',
+        'label': '620',
         'order': 2
     },
     'h_size': {
         'name': 'h_size',
-        'label': 'Size',
+        'label': '640',
         'order': 3
     }
 }
@@ -506,14 +451,14 @@ months_data = {
 #     2: {
 #         'name': 2,
 #         'label': 'Calyptopes',
-#         'duration': '23-60d',
+#         'duration': '23-63d',
 #         'color': '#74bdcb',
 #         'marker': '^'
 #     },
 #     3: {
 #         'name': 3,
 #         'label': 'Furcilia I-III',
-#         'duration': '60-96d',
+#         'duration': '63-96d',
 #         'color': '#3d5b59',
 #         'marker': 'o'
 #     },
@@ -557,14 +502,14 @@ stages = {
     2: {
         'name': 2,
         'label': 'Calyptopes',
-        'duration': '23-60d',
+        'duration': '23-63d',
         'color': vibrant_colors.teal,
         'marker': '^'
     },
     3: {
         'name': 3,
         'label': 'Furcilia I-III',
-        'duration': '60-96d',
+        'duration': '63-96d',
         'color': vibrant_colors.orange,
         'marker': 'o'
     },
@@ -574,5 +519,70 @@ stages = {
         'duration': '>96d',
         'color': vibrant_colors.magenta,
         'marker': 's'
+    }
+}
+
+# Define Strata
+mu_strata = {
+    'MU_EI': {
+        'name': 'EI',
+        'label': 'Elephant Island',
+        'order': 0,
+        'color': '#d55e00',
+        'boxes': [
+            {'lonpoly': [-53.4425, -58.0, -58.0, -53.4425], 'latpoly': [-60.0, -60.0, -61.8987, -61.8987]}
+        ]
+    },
+    'MU_SSIW': {
+        'name': 'SSIW',
+        'label': 'South Shetland Islands West',
+        'order': 1,
+        'color': '#029e73',
+        'boxes': [
+            {'lonpoly': [-58.0, -59.4842, -59.5536, -60.5258, -63.3036, -61.9842, -58.0, -58.0],
+             'latpoly': [-60.0, -60.0, -60.7958, -60.7958, -62.2125, -62.9563, -61.8987, -60.0]}
+        ]
+    },
+    'MU_BS': {
+        'name': 'BS',
+        'label': 'Bransfield Strait',
+        'order': 2,
+        'color': '#cc78bc',
+        'boxes': [
+            {'lonpoly': [-56.255, -58.0, -61.9842, -59.99497, -56.255], 
+             'latpoly': [-61.8987, -61.8987, -62.9563, -63.88167, -63.0083]}
+        ]
+    },
+    'MU_JOIN': {
+        'name': 'JOIN',
+        'label': 'Joinville Islands',
+        'order': 3,
+        'color': '#0173b2',
+        'boxes': [
+            {'lonpoly': [-53.4425, -56.255, -56.255, -53.4425],
+             'latpoly': [-61.8987, -61.8987, -63.4167, -63.4167]}
+        ]
+    },
+    'MU_GERL': {
+        'name': 'GS',
+        'label': 'Gerlache Strait',
+        'order': 4,
+        'color': '#f0e442',
+        'boxes': [
+            {'lonpoly': [-62.795, -61.9842, -59.74, -63.5504, -66.3476],
+             'latpoly': [-62.5, -62.9563, -64.0, -65.727, -64.3]}
+        ]
+    },
+    '48_1': {
+        'name': '48.1',
+        'label': 'Antarctic Peninsula',
+        'order': 5,
+        'color': '#e69f00',
+        'boxes': [
+        {
+            'lonpoly': lonpoly_48_1,
+            'latpoly': latpoly_48_1
+        }
+    ]
     }
 }
